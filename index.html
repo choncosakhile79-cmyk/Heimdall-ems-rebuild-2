@@ -295,13 +295,13 @@ body.dark-mode .innovation-disclaimer{background:#142d49;color:#c5d6e8}
 </div></div>
 </div>
 <div id="workspacePanel" class="panel">
-<div class="panel-head"><div><div class="kicker" id="workspaceRole">DEMO WORKSPACE</div><h3 id="workspaceTitle">Workspace</h3><p id="workspaceDescription" style="margin:0;color:var(--muted)">Sample role content</p></div><div style="display:flex;gap:9px;flex-wrap:wrap"><button class="btn" style="background:#e6f3ff;color:var(--blue);box-shadow:none" onclick="document.getElementById('map').scrollIntoView({behavior:'smooth'})">Open satellite map ↓</button><button class="btn" onclick="logout()">Sign out</button></div></div>
+<div class="panel-head"><div><div class="kicker" id="workspaceRole">DEMO WORKSPACE</div><h3 id="workspaceTitle">Workspace</h3><p id="workspaceDescription" style="margin:0;color:var(--muted)">Sample role content</p></div><div style="display:flex;gap:9px;flex-wrap:wrap"><button class="btn" style="background:#e6f3ff;color:var(--blue);box-shadow:none" onclick="document.getElementById('map').scrollIntoView({behavior:'smooth'})">Open map ↓</button><button class="btn" onclick="logout()">Sign out</button></div></div>
 <div class="portal-stats" id="workspaceStats"></div>
 <div id="workspaceContent"></div>
 <div class="demo-hint"><strong>Demo data only.</strong> No live ambulances, actual patients, real bed availability, or emergency dispatch is connected. Do not enter real patient information.</div>
 </div>
 </section>
-<section class="section map-section" id="map"><div class="section-head"><div class="kicker">Area overview</div><h2>Johannesburg satellite map</h2><p>The map opens in street view for clearer road labels, with satellite imagery available as an alternative. Case pins show approximate demo area locations only, not a patient’s actual live GPS position.</p></div>
+<section class="section map-section" id="map"><div class="section-head"><div class="kicker">Area overview</div><h2>Johannesburg street map</h2><p>The map uses a simple street view. Pins show approximate demo locations only, not live GPS positions.</p></div>
 <div class="map-layout"><div class="map-copy"><h3>Johannesburg region</h3><p>Explore Johannesburg using a simple street map. Sample pins are illustrative only.</p>
 <div class="map-controls"><button id="resetMapBtn" onclick="resetJohannesburgMap()">Reset Johannesburg map</button></div>
 <p><strong>Demo markers</strong></p><p>🚑 Ambulance A — illustrative location<br>🏥 Sample hospital<br>⚠️ Sample incident</p>
@@ -472,7 +472,7 @@ function printHandoverSummary(){const c=emergencyCases[0];const w=window.open(''
  }
  if(btn){applyTheme(false);btn.addEventListener('click',function(){applyTheme(!document.body.classList.contains('dark-mode'));});}
 })();
-</script>
+<\/script>
 </body></html>');w.document.close()}
 function updateCrewStatus(status){const el=document.getElementById('crewStatus');if(el)el.textContent='Current demo status: '+status+' · no live GPS';toast('Crew demo status updated: '+status)}
 function caseTable(showAdmin){if(!emergencyCases.length)return '<p class="case-note">No cases created yet.</p>';return '<div class="table-wrap"><table class="demo-table"><thead><tr><th>Case</th><th>Patient</th><th>Hypothetical ID</th><th>Address / area</th><th>Priority</th><th>Medical aid status</th><th>Status</th><th>Map</th></tr></thead><tbody>'+emergencyCases.map(c=>'<tr><td>'+escapeHtml(c.caseId)+'</td><td>'+escapeHtml(c.name+' '+c.surname)+'</td><td>'+escapeHtml(c.patientId)+'</td><td>'+escapeHtml(c.address)+'<br><small>'+escapeHtml(c.area)+'</small></td><td>'+escapeHtml(c.priority)+'</td><td>'+medicalAidBadge(c.medAid)+'</td><td>'+escapeHtml(c.status)+'</td><td><button type="button" class="btn" style="padding:8px 10px;box-shadow:none" onclick="showCaseOnMap(\''+c.caseId+'\')">View pin</button></td></tr>').join('')+'</tbody></table></div><p class="case-note">All case records are fictional, held in page memory only, and disappear when the page is refreshed. Do not enter real patient information.</p>'}
@@ -524,5 +524,3 @@ window.addEventListener('resize',()=>{if(map){const c=document.getElementById('m
 
 </body>
 </html>
-
-<style>html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.12s!important;scroll-behavior:auto!important}.reveal-on-scroll,.motion-ready .reveal-on-scroll{opacity:1!important;transform:none!important;filter:none!important}</style>
